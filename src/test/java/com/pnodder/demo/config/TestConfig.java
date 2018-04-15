@@ -14,16 +14,15 @@ import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableTransactionManagement(proxyTargetClass = true)
-public class AppConfig {
+@EnableTransactionManagement
+public class TestConfig {
 
     @Bean(destroyMethod = "close")
     public BasicDataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/tdemo?useSSL=false");
-        dataSource.setUsername("patrick");
-        dataSource.setPassword("trance");
+        dataSource.setDriverClassName("org.h2.Driver");
+        dataSource.setUrl("jdbc:h2:~/test");
+        dataSource.setUsername("sa");
         return dataSource;
     }
 
@@ -48,7 +47,7 @@ public class AppConfig {
     @Bean
     public ResourceDatabasePopulator databasePopulator() throws Exception {
         ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
-        populator.addScript(new ClassPathResource("sql/schema.sql"));
+        populator.addScript(new ClassPathResource("sql/test-schema.sql"));
         populator.populate(dataSource().getConnection());
         return populator;
     }

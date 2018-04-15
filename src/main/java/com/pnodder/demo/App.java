@@ -20,6 +20,7 @@ public class App {
         for (Bike b : bikeService.findAll()) {
             System.out.println(b);
         }
+        bikeService.findByColour("Red");
     }
 
 }

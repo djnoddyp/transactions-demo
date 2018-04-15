@@ -16,4 +16,6 @@ public interface Service {
 
     void delete(Bike bike);
 
+    List<Bike> findByColour(String colour);
+
 }

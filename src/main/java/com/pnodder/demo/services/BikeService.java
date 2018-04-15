@@ -2,9 +2,11 @@ package com.pnodder.demo.services;
 
 import com.pnodder.demo.model.Bike;
 import com.pnodder.demo.repositories.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Transactional
 public class BikeService implements Service {
 
     private Repository repository;
@@ -36,5 +38,10 @@ public class BikeService implements Service {
     @Override
     public void delete(Bike bike) {
         repository.delete(bike);
+    }
+
+    @Override
+    public List<Bike> findByColour(String colour) {
+        throw new UnsupportedOperationException();
     }
 }
