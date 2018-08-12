@@ -46,7 +46,7 @@ public class BikeRepository implements Repository {
 
     public void insert(Bike bike) {
         jdbcTemplate.update("INSERT INTO Bikes (make, model, colour, style) " +
-                        "VALUES (?, ?, ?, ?)", bike.getMake(), bike.getModel(), bike.getColour(), bike.getStyle().name());
+                        "VALUES (?, ?, ?, CAST(? AS Style))", bike.getMake(), bike.getModel(), bike.getColour(), bike.getStyle().name());
     }
 
     public void delete(Bike bike) {

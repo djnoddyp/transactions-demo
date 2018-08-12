@@ -20,10 +20,10 @@ public class AppConfig {
     @Bean(destroyMethod = "close")
     public BasicDataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/tdemo?useSSL=false");
-        dataSource.setUsername("patrick");
-        dataSource.setPassword("trance");
+        dataSource.setDriverClassName("org.postgresql.Driver");
+        dataSource.setUrl("jdbc:postgresql://localhost:5432/transactions_demo");
+        dataSource.setUsername("postgres");
+        dataSource.setPassword("postgres");
         return dataSource;
     }
 

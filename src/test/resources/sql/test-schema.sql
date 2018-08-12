@@ -1,11 +1,13 @@
 DROP TABLE IF EXISTS Bikes;
+DROP TYPE IF EXISTS Style;
 
-CREATE TABLE Bikes
-(
-  id      INT NOT NULL AUTO_INCREMENT,
+CREATE TYPE Style AS ENUM ('MOUNTAIN', 'ROAD', 'HYBRID');
+
+CREATE TABLE Bikes (
+  id      SERIAL,
   make    VARCHAR(20),
   model   VARCHAR(20),
   colour  VARCHAR(20),
-  style   ENUM('MOUNTAIN', 'ROAD', 'HYBRID'),
+  style   Style,
   PRIMARY KEY (id)
 );
