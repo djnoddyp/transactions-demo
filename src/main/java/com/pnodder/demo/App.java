@@ -8,12 +8,13 @@ import com.pnodder.demo.services.Service;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+
 public class App {
 
     public static void main(String[] args) {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
-        Bike bikeOne = Bike.of("GT", "Avalanche 1.0", "Silver", Style.MOUNTAIN);
-        Bike bikeTwo = Bike.of("Specialized", "Roubaix", "Red", Style.ROAD);
+        Bike bikeOne = Bike.of(1L, "GT", "Avalanche 1.0", "Silver", Style.MOUNTAIN);
+        Bike bikeTwo = Bike.of(2L, "Specialized", "Roubaix", "Red", Style.ROAD);
         Service bikeService = ctx.getBean(BikeService.class);
         bikeService.insert(bikeOne);
         bikeService.insert(bikeTwo);

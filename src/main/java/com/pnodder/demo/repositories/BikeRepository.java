@@ -31,22 +31,17 @@ public class BikeRepository implements Repository {
     }
 
     public Bike findById(Long id) {
-        return jdbcTemplate.queryForObject(
-                "SELECT * FROM Bikes WHERE id = ?",
-                new Object[]{id},
-                bikeMapper);
+        return jdbcTemplate.queryForObject("SELECT * FROM Bikes WHERE id = ?", new Object[]{id}, bikeMapper);
     }
 
     public List<Bike> findByMake(String make) {
-        return jdbcTemplate.query(
-                "SELECT * FROM Bikes WHERE make = ?",
-                new Object[]{make},
-                bikeMapper);
+        return jdbcTemplate.query("SELECT * FROM Bikes WHERE make = ?", new Object[]{make}, bikeMapper);
     }
 
     public void insert(Bike bike) {
-        jdbcTemplate.update("INSERT INTO Bikes (make, model, colour, style) " +
-                        "VALUES (?, ?, ?, CAST(? AS Style))", bike.getMake(), bike.getModel(), bike.getColour(), bike.getStyle().name());
+        jdbcTemplate.update("INSERT INTO Bikes (id, make, model, colour, style) " +
+                        "VALUES (?, ?, ?, ?, CAST(? AS Style))", 
+                bike.getId(), bike.getMake(), bike.getModel(), bike.getColour(), bike.getStyle().name());
     }
 
     public void delete(Bike bike) {

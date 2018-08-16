@@ -11,15 +11,16 @@ public class Bike {
     public Bike() {
     }
 
-    private Bike(String make, String model, String colour, Style style) {
+    private Bike(Long id, String make, String model, String colour, Style style) {
+        this.id = id;
         this.make = make;
         this.model = model;
         this.colour = colour;
         this.style = style;
     }
 
-    public static Bike of(String make, String model, String colour, Style style) {
-        return new Bike(make, model, colour, style);
+    public static Bike of(Long id, String make, String model, String colour, Style style) {
+        return new Bike(id, make, model, colour, style);
     }
 
     public Long getId() {

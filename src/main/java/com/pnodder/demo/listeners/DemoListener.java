@@ -1,11 +1,11 @@
 package com.pnodder.demo.listeners;
 
-import javax.jms.Message;
+import org.springframework.jms.annotation.JmsListener;
 
-public class DemoListener implements javax.jms.MessageListener {
+public class DemoListener {
 
-    @Override
-    public void onMessage(Message message) {
-        System.out.println("got message");
+    @JmsListener(destination = "messageQueue1")
+    public void onMessage(String message) {
+        System.out.println("received: " + message);
     }
 }
